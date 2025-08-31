@@ -25,4 +25,8 @@ public class Routes{
     public item addItem(@RequestBody item newitem) { 
         return InventoryService.add(newitem);
     }
+    @GetMapping("/expired")
+    public List<item> expired(){
+        return InventoryService.getExpiredItems();
+    }
 }

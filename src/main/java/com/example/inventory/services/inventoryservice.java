@@ -4,6 +4,7 @@ import com.example.inventory.model.item;
 import com.example.inventory.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 @Service
 public class inventoryservice {
     @Autowired
@@ -19,5 +20,9 @@ public class inventoryservice {
      }
          public item fetch(int id){
         return inventoryRepository.findById(id).orElse(null);
+    }
+    public List<item> getExpiredItems(){
+        List<item> expiredItems=inventoryRepository.findByExpiryBefore(LocalDate.now());
+        return expiredItems;
     }
 }
