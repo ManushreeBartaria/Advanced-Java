@@ -29,4 +29,8 @@ public class Routes{
     public List<item> expired(){
         return InventoryService.getExpiredItems();
     }
+    @GetMapping("/aboutToExpire")
+    public List<item> aboutToExpire(){
+        return InventoryService.getaboutToExpireItems();
+    }
 }

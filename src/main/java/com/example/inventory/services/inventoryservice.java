@@ -25,4 +25,7 @@ public class inventoryservice {
         List<item> expiredItems=inventoryRepository.findByExpiryBefore(LocalDate.now());
         return expiredItems;
     }
+    public List<item> getaboutToExpireItems(){
+        return inventoryRepository.findByabouttogetexpired();
+    }
 }
