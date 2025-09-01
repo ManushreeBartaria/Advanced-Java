@@ -10,6 +10,7 @@ import com.example.inventory.services.inventoryservice;
 import com.example.inventory.model.item;
 import java.time.LocalDate;
 import org.springframework.web.bind.annotation.*;
+import com.example.inventory.model.company;
 @RestController
 @RequestMapping("/api/inventory")
 public class Routes{
@@ -21,16 +22,27 @@ public class Routes{
     }
 
     @PostMapping("/addItem")
-   
     public item addItem(@RequestBody item newitem) { 
         return InventoryService.add(newitem);
     }
+
     @GetMapping("/expired")
     public List<item> expired(){
         return InventoryService.getExpiredItems();
     }
+
     @GetMapping("/aboutToExpire")
     public List<item> aboutToExpire(){
         return InventoryService.getaboutToExpireItems();
+    }
+
+    @PostMapping("/registerCompany")
+    public company registerCompany(@RequestBody company newcompany){     
+            return InventoryService.addCompany(newcompany);
+    }
+    
+    @PostMapping("/dispose/request")
+    public List<company> requestDisposal(@RequestBody Map<String, Integer> request) {
+        return InventoryService.disposeRequest(request.get("id"));
     }
 }
