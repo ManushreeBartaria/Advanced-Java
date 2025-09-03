@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import org.springframework.web.bind.annotation.*;
 import com.example.inventory.model.company;
 import com.example.inventory.model.disposed;
+import com.example.inventory.model.DeliveryCompanies;
 @RestController
 @RequestMapping("/api/inventory")
 public class Routes{
@@ -51,4 +52,9 @@ public class Routes{
     public disposed confirmDisposal(@RequestBody Map<String,Integer> request){
         return InventoryService.confirmDisposal(request.get("itemId"), request.get("companyId"));
     }   
+
+    @PostMapping("/registerDeliveryCompanies")
+    public DeliveryCompanies registerDeliveryCompanies(@RequestBody DeliveryCompanies newDeliveryCompanies){     
+            return InventoryService.addDeliveryCompanies(newDeliveryCompanies);
+    }
 }

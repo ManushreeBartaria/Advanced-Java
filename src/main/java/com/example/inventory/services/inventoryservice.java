@@ -4,11 +4,13 @@ import com.example.inventory.model.item;
 import com.example.inventory.repository.InventoryRepository;
 import com.example.inventory.repository.CompanyRepository;
 import com.example.inventory.repository.DisposedRepository;
+import com.example.inventory.repository.DeliveryCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import com.example.inventory.model.company;
 import com.example.inventory.model.disposed;
+import com.example.inventory.model.DeliveryCompanies;
 @Service
 public class inventoryservice {
     @Autowired
@@ -17,6 +19,8 @@ public class inventoryservice {
     private CompanyRepository companyRepository;
     @Autowired
     private DisposedRepository disposedRepository;
+    @Autowired
+    private DeliveryCompanyRepository deliveryCompanyRepository;
     public item add(item newitem){
         try{
             return inventoryRepository.save(newitem);
@@ -56,5 +60,9 @@ public class inventoryservice {
         int companys_id= c.getId();
         String companyName= c.getCompanyName();
         return disposedRepository.save(new disposed(itemName, companyName, LocalDate.now(), companys_id, items_id));
+    }
+
+    public DeliveryCompanies addDeliveryCompanies(DeliveryCompanies newDeliveryCompanies){
+        return deliveryCompanyRepository.save(newDeliveryCompanies); 
     }
 }
