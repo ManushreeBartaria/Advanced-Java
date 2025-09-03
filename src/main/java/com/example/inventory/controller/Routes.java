@@ -11,6 +11,7 @@ import com.example.inventory.model.item;
 import java.time.LocalDate;
 import org.springframework.web.bind.annotation.*;
 import com.example.inventory.model.company;
+import com.example.inventory.model.disposed;
 @RestController
 @RequestMapping("/api/inventory")
 public class Routes{
@@ -45,4 +46,9 @@ public class Routes{
     public List<company> requestDisposal(@RequestBody Map<String, Integer> request) {
         return InventoryService.disposeRequest(request.get("id"));
     }
+
+    @PostMapping("/dispose/confirm")
+    public disposed confirmDisposal(@RequestBody Map<String,Integer> request){
+        return InventoryService.confirmDisposal(request.get("itemId"), request.get("companyId"));
+    }   
 }
