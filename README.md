@@ -29,7 +29,8 @@ A Spring Boot application for managing inventory, supplies, and delivery operati
 ## Technology Stack
 
 - **Backend Framework:** Spring Boot
-- **Database:** MySQL
+- **Database:** MySQL (via XAMPP)
+- **Database Management:** phpMyAdmin
 - **Build Tool:** Maven
 - **Java Version:** JDK 17+
 
@@ -56,8 +57,12 @@ src/
    - MySQL Server
 
 2. **Database Configuration**
+   - Install and start XAMPP
+   - Start Apache and MySQL services in XAMPP Control Panel
+   - Access phpMyAdmin through `http://localhost/phpmyadmin`
    - Create a MySQL database
    - Update application.properties with your database credentials
+   - Use phpMyAdmin interface to monitor and manage database entries
 
 3. **Build and Run**
    ```bash
