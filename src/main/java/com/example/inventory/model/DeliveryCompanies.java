@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Convert;
 import com.example.inventory.model.ListToStringConverter;
 @Entity
-@Table(name="DeliveryCompanies")
+@Table(name="delivery_companies")
 
 public class DeliveryCompanies{
     @Id

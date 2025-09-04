@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.inventory.model.company;
 import com.example.inventory.model.disposed;
 import com.example.inventory.model.DeliveryCompanies;
+import com.example.inventory.model.delivered;
 @RestController
 @RequestMapping("/api/inventory")
 public class Routes{
@@ -56,5 +57,15 @@ public class Routes{
     @PostMapping("/registerDeliveryCompanies")
     public DeliveryCompanies registerDeliveryCompanies(@RequestBody DeliveryCompanies newDeliveryCompanies){     
             return InventoryService.addDeliveryCompanies(newDeliveryCompanies);
+    }
+
+    @PostMapping("/delivery")
+    public List<DeliveryCompanies> delivery(@RequestBody Map<String, String> request){
+        return InventoryService.getDeliveryCompaniesByLocation(request.get("location"));
+    }
+
+    @PostMapping("/delivered")
+    public delivered delivered(@RequestBody Map<String, Integer> request){
+        return InventoryService.markAsDelivered(request.get("itemId"), request.get("deliveryCompanyId"));
     }
 }
