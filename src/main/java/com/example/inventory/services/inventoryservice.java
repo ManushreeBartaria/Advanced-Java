@@ -72,7 +72,10 @@ public class inventoryservice {
     }
 
     public List<DeliveryCompanies> getDeliveryCompaniesByLocation(String location){
-        return deliveryCompanyRepository.findByregion(location);
+        System.out.println(location);
+        List<DeliveryCompanies> d= deliveryCompanyRepository.findByregion(location);
+        System.out.println(d);
+        return d;
     }
 
     public delivered markAsDelivered(int itemId, int deliveryCompanyId){

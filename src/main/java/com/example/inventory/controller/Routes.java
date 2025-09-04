@@ -62,7 +62,8 @@ public class Routes{
 
     @PostMapping("/delivery")
     public List<DeliveryCompanies> delivery(@RequestBody Map<String, String> request){
-        return InventoryService.getDeliveryCompaniesByLocation(request.get("location"));
+        String location=request.get("region");
+        return InventoryService.getDeliveryCompaniesByLocation(location);
     }
 
     @PostMapping("/delivered")
