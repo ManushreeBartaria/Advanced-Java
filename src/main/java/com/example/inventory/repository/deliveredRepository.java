@@ -6,5 +6,5 @@ import java.time.LocalDate;
 import org.springframework.data.jpa.repository.Query;
 import com.example.inventory.model.delivered;
 @Repository
-public interface deliveredRepository extends JpaRepository<delivered, Integer> {
+public interface DeliveredRepository extends JpaRepository<delivered, Integer> {
 }

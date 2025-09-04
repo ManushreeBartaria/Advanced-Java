@@ -14,6 +14,7 @@ import com.example.inventory.model.company;
 import com.example.inventory.model.disposed;
 import com.example.inventory.model.DeliveryCompanies;
 import com.example.inventory.model.delivered;
+import com.example.inventory.model.prediction;
 @RestController
 @RequestMapping("/api/inventory")
 public class Routes{
@@ -67,5 +68,10 @@ public class Routes{
     @PostMapping("/delivered")
     public delivered delivered(@RequestBody Map<String, Integer> request){
         return InventoryService.markAsDelivered(request.get("itemId"), request.get("deliveryCompanyId"));
+    }
+
+    @PostMapping("/allProductsPrediction")
+    public List<prediction> allProductsPrediction(@RequestBody Map<String, String> request){
+        return InventoryService.getAllProductsPrediction(request.get("region"),request.get("season"));
     }
 }

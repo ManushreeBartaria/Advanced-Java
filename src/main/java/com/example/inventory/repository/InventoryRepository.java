@@ -13,5 +13,7 @@ public interface InventoryRepository extends JpaRepository<item, Integer> {
     List<item> findByabouttogetexpired();
     @Query(value = "SELECT item_name FROM items WHERE id = ?1", nativeQuery = true)
     String findByname(int id);
+    @Query(value = "SELECT i.* FROM items i", nativeQuery = true)
+    List<item> findAllItems();
 }
 
